@@ -1,0 +1,10 @@
+#######################################
+#    Locale for mastodon status bot   #
+#######################################
+
+error:
+  es: "lo siento pero no he entendido tu tirada"
+  ca: "ho sento però no he entès la teva tirada"
+  en: "I'm sorry, but I didn't understand your roll"  
+  gl: "síntoo, pero non entendín o teu lanzamento"
+  
