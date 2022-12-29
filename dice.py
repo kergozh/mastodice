@@ -73,7 +73,7 @@ class Bot(Mastobot):
             txt = txt.lower()
             ops = txt.split("+")
             for op in ops:
-                if max_dice = True:
+                if max_dice:
                     break
                 op = op.strip()
                 if op.isdigit():
