@@ -8,3 +8,9 @@ error:
   en: "I'm sorry, but I didn't understand your roll"  
   gl: "síntoo, pero non entendín o teu lanzamento"
   
+max:
+  es: "lo siento pero el límite son 50 dados"
+  ca: "ho sento però el límit són 50 daus"
+  en: "I'm sorry, but the limit is 50 dice"  
+  gl: "perdón pero o límite é de 50 dados"
+  
