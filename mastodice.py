@@ -26,22 +26,19 @@ class Bot(Mastobot):
 
     def run(self, botname: str = BOT_NAME) -> None:
 
-        action   = self._actions["roll_dice"]   
         notifications = self.mastodon.notifications()
  
         for notif in notifications:
 
-            replay, dismiss = self.process_notif(notif, "mention", "")
-            if replay:
-                self.replay_toot(self.find_text(notif, action), notif)
-     
-            if dismiss:
-                self.mastodon.notifications_dismiss(notif.id)
+            content = self.check_notif(notif, "mention")
+
+            if content != "":
+                self.replay_toot(self.find_text(notif), notif)
 
         super().run(botname = botname)
 
 
-    def find_text(self, notif, action):        
+    def find_text(self, notif):        
 
         language = notif.status.language
         username = notif.account.acct

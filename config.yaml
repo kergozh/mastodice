@@ -14,7 +14,7 @@ bot:
   # [String] Name of the app
   app_name: "dice"
   # [String]  Instance hostname 
-  hostname: "mastodont.cat"
+  hostname: "frikiverse.zone"
   # [String] Access type: Access Token = "AT" | Credentials = "CR" 
   access_type: "CR"
 
