@@ -13,6 +13,8 @@ import re
 import random
 
 BOT_NAME = "Dicebot"
+MAX_LENGHT = 490
+
 
 class Bot(Mastobot):
 
@@ -56,7 +58,9 @@ class Bot(Mastobot):
         txt = re.sub("(test)","", txt).strip()
         self._logger.debug("txt: " + txt)                    
 
-        x = re.search("(^(\d{1,2}[dD](2|4|6|8|10|12|20|50|100))|(\d{1,2}))((\s*\+\s*\d{1,2}[dD](2|4|6|8|10|12|20|50|100))*(\s*\+\s*\d{1,2})*)*$", txt)
+        rs = self._actions.get(("roll_dice.rolls"))
+        rg = "(^(\d{1,2}[dD](" + rs + "))|(\d{1,2}))((\s*\+\s*\d{1,2}[dD](" + rs + "))*(\s*\+\s*\d{1,2})*)*$"
+        x = re.search(rg, txt)
 
         text1 = text2 = ""
         total = 0
@@ -101,12 +105,12 @@ class Bot(Mastobot):
             if max_dice:
                 post_text = post_text + _text("max")
             else:
-                if len(text1) + len(text2) < 380:
+                if len(post_text) + len(text1) + len(text2) + 2 < MAX_LENGHT:
                     post_text  = post_text + "\n" + text2 + "\n" + text1
                 else:     
                     post_text  = post_text + "\n" + text1
 
-        post_text = (post_text[:400] + '... ') if len(post_text) > 400 else post_text
+        post_text = (post_text[:MAX_LENGHT] + '... ') if len(post_text) > MAX_LENGHT else post_text
 
         self._logger.debug ("answer text\n" + post_text)
 
